@@ -2,9 +2,11 @@
   <div class="login-screen">
     <div class="header">
       <!-- Logo area -->
-      <div class="logo">
-        <img src="/caffeinatedLogo.png" alt="Your Logo" />
-      </div>
+      <router-link to="/landing">
+        <div class="logo">
+          <img src="/caffeinatedLogo.png" alt="Your Logo" />
+        </div>
+      </router-link>
     </div>
     <div class="back-button" @click="goBack">
       <img src="/arrow.svg" alt="Back" />
@@ -36,13 +38,13 @@ export default {
   },
   methods: {
     goBack() {
-      // Implement the logic to go back to the previous page
+      // Implement logic to go back to the previous page
     },
     signIn() {
-      // Implement the logic to sign in
+      // Implement logic to sign in
     },
     createAccount() {
-      // Implement the logic to create an account
+      // Implement logic to create an account
     },
   },
 };
@@ -59,20 +61,20 @@ export default {
   font-size: var(--font-size-xl);
   color: var(--color-black);
   font-family: var(--font-jost);
-  padding-top: 20px; /* Add padding to the top for spacing */
+  padding-top: 20px; 
 }
 
 /* Header styling */
 .header {
   text-align: center;
-  width: 100% 0%;
-  padding: 10px 55; /* Add padding to create space for the logo */
-  background-color: #fbf5f2; /* Adjust background color as needed */
+  width: 100%;
+  padding: 10px 0; 
+  background-color: #fff4e6; 
 }
 
 /* Logo styling */
 .logo img {
-  max-width: 150px; /* Adjust the max width as needed */
+  max-width: 150px; 
 }
 
 .back-button {
