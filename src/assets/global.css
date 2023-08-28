@@ -1,0 +1,23 @@
+@import url("https://fonts.googleapis.com/css2?family=Jost:wght@300;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap");
+body {
+  margin: 0;
+  line-height: normal;
+}
+:root {
+  /* fonts */
+  --font-jost: Jost;
+  --font-inter: Inter;
+
+  /* font sizes */
+  --font-size-xl: 20px;
+
+  /* Colors */
+  --color-white: #fff;
+  --color-sienna: #854442;
+  --color-black: #000;
+
+  /* border radiuses */
+  --br-3xs: 10px;
+  --br-5xs: 8px;
+}
