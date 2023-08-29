@@ -25,27 +25,15 @@
             <div class="group-child"></div>
             <div class="register">Register</div>
         </div>
-        <img class="caffeinated-3-1"
-             alt="main picture"
-             src="images/mainpic.png" />
-
         <div class="caffeinated">CAFFEINATED</div>
         <div class="lets-get-caffeinated">Let’s get caffeinated.</div>
         <div class="find-coffee">
             <div class="find-coffee-child" id="rectangle1"></div>
             <div class="find-coffee1">Find coffee!</div>
-            <img class="vector-icon" 
-                 alt="search" 
-                 src="images/search.png" />
         </div>
         <div class="locations">Locations</div>
         <div class="about-us">About Us</div>
         <div class="landing-high-child"></div>
-        <img class="caffeinated-2-1"
-             alt="logo"
-             src="images/logo.png" />
-
-        <img class="icon" alt="logo" src="images/coffeebeans.png" />
     </div>
 
 </body>
