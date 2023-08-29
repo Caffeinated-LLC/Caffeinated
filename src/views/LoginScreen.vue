@@ -61,15 +61,15 @@ export default {
   font-size: var(--font-size-xl);
   color: var(--color-black);
   font-family: var(--font-jost);
-  padding-top: 20px; 
+  padding-top: 0px; 
 }
 
 /* Header styling */
 .header {
   text-align: center;
   width: 100%;
-  padding: 10px 0; 
-  background-color: #fff4e6; 
+  padding: -10px 0; 
+  background-color: #854442; 
 }
 
 /* Logo styling */
@@ -86,8 +86,8 @@ export default {
 
 .form {
   background-color: #fbf5f2;
-  padding: 55px;
-  border-radius: 27px;
+  padding: 75px;
+  border-radius: 25px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
