@@ -197,3 +197,22 @@ export default defineComponent({
 </style>
 
 
+<body>
+    <div class="landing-high">
+        <div class="rectangle-parent">
+            <div class="group-child"></div>
+            <div class="register">Register</div>
+        </div>
+        <div class="caffeinated">CAFFEINATED</div>
+        <div class="lets-get-caffeinated">Let’s get caffeinated.</div>
+        <div class="find-coffee">
+            <div class="find-coffee-child" id="rectangle1"></div>
+            <div class="find-coffee1">Find coffee!</div>
+        </div>
+        <div class="locations">Locations</div>
+        <div class="about-us">About Us</div>
+        <div class="landing-high-child"></div>
+    </div>
+
+</body>
+</template>

@@ -1,36 +1,101 @@
 <template>
   <div class="auth">
-    <template v-if="!userLoggedIn">
-      <!-- Email and Password Inputs -->
-      Email: <input type="text" v-model.trim="email" />
-      <br>
-      Password: <input type="password" v-model.trim="password" />
-      <template v-if="password !== null && password.length < 6" >
-        Your password must be at least 6 characters
+      <template v-if="!authStore.user">
+          <title>Login</title>
+
+              <h2>Login</h2>
+              <input type="text" v-model="user.email" placeholder="Email"/>
+              <input type="password" v-model="user.password" placeholder="Password"/>
+              <button @click="login()">Log in</button>
+              <br>
+              <br>
+              <h3>Don't have an account? Click this button to sign up!</h3>
+              <RouterLink to="/Signup"><button>Sign Up</button></RouterLink>
       </template>
-      <br>
-      <!-- Create User and Login buttons -->
-      <button @click="createUser()">Create User</button>
-      <br>
-      <button @click="login()">Login</button>
-      <!-- Show error messages -->
-      <template v-if="userNotFound">
-        <br>
-        User not found
+
+      <template v-if="authStore.user">
+          <title>Sign out</title>
+              <RouterLink to="/Login"><button @click="logout()">Sign Out</button></RouterLink>
       </template>
-      <template v-if="invalidPassword">
-        <br>
-        Invalid password
-      </template>
-    </template>
-    <!-- If the user is logged in, show Sign Out button -->
-    <template v-else>
-      <button @click="signOut()">Sign Out</button>
-    </template>
   </div>
 </template>
 
 <script>
+    import { ref } from "vue";
+    let input = ref("");
+
+    import { auth } from '../firebaseResources';
+    import { signInWithEmailAndPassword } from 'firebase/auth';
+    import { fetchSignInMethodsForEmail, signOut } from 'firebase/auth';
+    import { useAuthStore } from '../stores/auth';
+
+    export default{
+        data(){
+            return{
+                user: {
+                    email: null,
+                    password: null,
+                },
+                authStore: useAuthStore(),
+            }
+        },
+        mounted(){
+                auth.onAuthStateChanged((user) =>{
+                    if(user){
+                        this.authStore.setUser(user.email);
+                    }
+                    else{
+                        this.authStore.setUser(null);
+                    }
+                })
+            },
+        methods:{
+            async login(){
+                try{
+                    this.notFound = false;
+                    this.invalidPswd = false;
+                    console.log('logging in...');
+                    await signInWithEmailAndPassword(auth, this.user.email, this.user.password);
+                    this.authStore.setUser(this.user);
+                    console.log('successfully logged in!')
+                }
+                catch(e){
+                    console.error('Error in login', e);
+                }
+            },
+            async logout(){
+                try{
+                    if(auth.currentUser){
+                        console.log('logging out...');
+                        await signOut(auth);
+                        this.authStore.signOut();
+                        console.log('Successfully logged out!')
+                    }
+                    else{
+                        console.log('no user signed in');
+                    }
+                }
+                catch(err){
+                    console.log('error logging out');
+                }
+            },
+        }
+    }
+</script>
+
+<style scoped>
+  @media (min-width: 1024px) {
+    .about {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+  }
+</style>
+
+
+
+<!-- <script>
 import { auth } from '../firebaseResources';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 
@@ -122,144 +187,4 @@ export default {
     }
   }
 };
-</script>
-
-<style>
-@media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
-}
-</style>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <template>
-  <div class="auth">
-    <template v-if="!userLoggedIn">
-      Email: <input type="text" v-model.trim="email" />
-      <br>
-      Password: <input type="password" v-model.trim="password" />
-      <template v-if="password != null && password.length != 0 && password.length < 6" >
-        Your password must be at least 6 characters
-      </template>
-      <br>
-      <button @click="createUser()">Create User</button>
-      <br>
-      <button @click="login()">Login</button>
-      <template v-if="userNotFound">
-        <br>
-        User not found
-      </template>
-      <template v-if="invalidPassword">
-        <br>
-        Invalid password
-      </template>
-    </template>
-    <template v-else>
-      <button @click="signOut()">Sign Out</button>
-    </template>
-  </div>
-</template> !
-
-<script>
-import { auth } from '../firebaseResources';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth';
-
-export default {
-  data() {
-    return {
-      email: null,
-      password: null,
-
-      userNotFound: false,
-      invalidPassword: false,
-
-      userLoggedIn: false,
-    }
-  },
-  mounted() {
-    const user = auth.currentUser;
-    if (user != null) {
-      this.userLoggedIn = true;
-    }
-  },
-  methods: {
-    async login() {
-      try {
-        // Reset error messages
-        this.userNotFound = false;
-        this.invalidPassword = false;
-
-        await signInWithEmailAndPassword(auth, this.email, this.password);
-
-        // Mark that we are now logged in
-        this.userLoggedIn = true;
-      } catch(err) {
-        if (err.code) {
-          // Process auth specific error messages and display them to the user
-          if (err.code === 'auth/wrong-password') {
-            console.error('Error in login, wrong password');
-            this.invalidPassword = true;
-          } else if (err.code === 'auth/user-not-found') {
-            console.error('Error in login, user not found');
-            this.userNotFound = true;
-          }
-        } else {
-          // All other errors are logged to the console
-          console.error('Error in login', err);
-        }
-      }
-    },
-    async createUser() {
-      try {
-        this.userNotFound = false;
-        this.invalidPassword = false;
-
-        if (this.password !== null && this.password.length < 6) {
-          this.invalidPassword = true;
-          return;
-        }
-
-        await createUserWithEmailAndPassword(auth, this.email, this.password);
-        this.userLoggedIn = true;
-
-        // Clear input fields after successful user creation
-        this.email = null;
-        this.password = null;
-      } catch(err) {
-        console.error('Error in createUser', err);
-      }
-    },
-    async signOut() {
-      try {
-        if (auth.currentUser) {
-          await signOut(auth);
-
-          // Mark that we are now logged out
-          this.userLoggedIn = false;
-        } else {
-          console.warn('No user signed in');
-        }
-      } catch(err) {
-        console.error('Error in signOut', err);
-      }
-    }
-  }
-}
 </script> -->
