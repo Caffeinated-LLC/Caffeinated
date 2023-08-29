@@ -27,6 +27,11 @@ const router = createRouter({
       name: 'login',
       component: () => import('../views/LoginScreen.vue'),
     },
+    {
+      path: '/search',
+      name: 'search',
+      component: () => import('../views/MapResults.vue'),
+    },
     // {
     //   path: '/user',
     //   name: 'user',

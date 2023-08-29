@@ -220,11 +220,11 @@ button:hover {
     <!-- Logo area -->
     <div class="header">
       <div class="logo" @click="goToLandingPage">
-        <img src="/logo.png" alt="Your Logo" />
+        <img   src="/caffeinated-2-1@2x.png" alt="Your Logo" />
       </div>
     </div>
     <div class="back-button" @click="goToLandingPage">
-      <img src="/arrow.svg" alt="Back" />
+      <img src="/arrow-1.svg" alt="Back" />
     </div>
     <div class="form">
       <div class="input-container">
@@ -255,14 +255,9 @@ export default {
   },
   methods: {
     goToLandingPage() {
-      // Implement the logic to navigate to the landing page
-      // For now, you can use window.location.href or your router logic
-      // Example using window.location.href:
       window.location.href = "/landing-page";
     },
     signIn() {
-      // Implement the logic to sign in
-      // You can use the provided login method here
       this.login();
     },
   },
@@ -287,21 +282,23 @@ export default {
 .header {
   text-align: center;
   width: 100%;
-  padding: -10px 0;
+  padding: 10px 0;
   background-color: #854442;
 }
 
 /* Logo styling */
 .logo img {
-  max-width: 150px; /* Adjust the max width as needed */
-  cursor: pointer; /* Make the logo clickable */
+  max-width: 170px; 
+  cursor: pointer; /* Making logo clickable */
 }
 
 .back-button {
   position: absolute;
-  top: 20px;
-  left: 20px;
+  top: 40px;
+  left: 50px;
   cursor: pointer;
+  width: 30px; /* Reduce the width */
+  height: 30px; /* Reduce the height */
 }
 
 .form {
