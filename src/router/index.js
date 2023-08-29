@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import DbView from '../views/DbView.vue'
-
+import Landing from '../views/LandingPage.vue'
+import About from '../views/AboutView.vue'
 
 
 const router = createRouter({
@@ -18,8 +19,8 @@ const router = createRouter({
       component: () => import('../views/AboutView.vue'),
     },
     {
-      path: '/signup',
-      name: 'signup',
+      path: '/login',
+      name: 'login',
       component: () => import('../views/Login.vue'),
     },
     {
@@ -36,8 +37,11 @@ const router = createRouter({
       path: '/landing',
       name: 'landing',
       component: () => import('../views/LandingPage.vue')
-    }
+    },
+   
   ]
 })
+
+  
 
 export default router
