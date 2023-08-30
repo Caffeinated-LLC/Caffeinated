@@ -1,16 +1,29 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+//import HomeView from '../views/HomeView.vue'
 import DbView from '../views/DbView.vue'
-
+import landing from '../views/LandingPage.vue'
+import about from '../views/AboutView.vue'
+import detailedresults from '../views/DetailedResults.vue'
 
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-    {
-      path: '/',
+    /*{
+
+      path: '/home',
       name: 'home',
       component: HomeView
+    },*/
+    {
+      path: '/signup',
+      name: 'signup',
+      component: () => import('../views/SignUp.vue'),
+    },
+    {
+      path: '/map',
+      name: 'map',
+      component: () => import('../views/MapResults.vue'),
     },
     {
       path: '/about',
@@ -38,12 +51,24 @@ const router = createRouter({
       component: DbView
     },
     {
-      path: '/landing',
+      path: '/',
       name: 'landing',
-      component: () => import('../views/LandingPage.vue')
-    }
+      component: () => import('../views/LandingPage.vue'),
+    },
+    {
+      path: '/detailedresults',
+      name: 'detailed',
+      component: () => import('../views/DetailedResults.vue'),
+    },
+
+//     {
+//       path: '/landing',
+//       name: 'landing',
+//       component: () => import('../views/HomeView.vue')
+//     }
 
   ]
 })
+ 
 
 export default router
