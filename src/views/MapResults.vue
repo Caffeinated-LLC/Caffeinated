@@ -25,10 +25,10 @@ import { Loader } from "@googlemaps/js-api-loader";
       </div>
       <div :class="$style.locations">Locations</div>
       <div :class="$style.aboutUs" @click="onAboutUsTextClick">
-        <RouterLink to="/about-us">About Us</RouterLink>
+        <RouterLink to="/about">About Us</RouterLink>
       </div>
       <div :class="$style.mapfiltersHighChild" />
-      <RouterLink to="/landing-page">
+      <RouterLink to="/">
         <img
           :class="$style.caffeinated21"
           alt=""
