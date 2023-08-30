@@ -15,6 +15,7 @@
   <script>
   import { ref, onMounted } from 'vue';
   import { db } from '../firebaseResources'; // Import the db instance from your firebaseResources.js file
+  import { query, collection, where } from 'firebase/firestore'
   
   export default {
     data() {
@@ -33,7 +34,7 @@
   },
     methods: {
       async fetchCafeDataFromFirestore(city) {
-        const snapshot = await db.collection('cafes').where('city', '==', city).get();
+        const snapshot = await query(collection(db, 'cafes'), where('city', '==', city));
         const cafes = [];
         snapshot.forEach(doc => {
           cafes.push({ id: doc.id, ...doc.data() });
