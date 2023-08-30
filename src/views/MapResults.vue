@@ -1,9 +1,9 @@
-<!-- 
+
 <script setup>
 // import TheWelcome from '../components/TheWelcome.vue'
 import Maps from '../components/Maps.vue';
 import { Loader } from "@googlemaps/js-api-loader";
-</script> -->
+</script>
 
 <template>
     <main>
@@ -63,6 +63,8 @@ import { Loader } from "@googlemaps/js-api-loader";
 
 .container {
   display: flex;
+  top: 40px;
+  right: 50px;
   justify-content: space-between;
   padding: 20px; 
 }

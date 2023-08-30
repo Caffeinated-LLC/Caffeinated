@@ -28,8 +28,8 @@ const router = createRouter({
       component: () => import('../views/LoginScreen.vue'),
     },
     {
-      path: '/search',
-      name: 'search',
+      path: '/map',
+      name: 'map',
       component: () => import('../views/MapResults.vue'),
     },
     // {

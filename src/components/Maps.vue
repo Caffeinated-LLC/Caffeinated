@@ -1,7 +1,15 @@
-<template>
-  <GoogleMap :api-key="mapsapi" style="width: 500px; height: 500px; flex: 2" :center="center" :zoom="12">
+<!-- <template>
+  <GoogleMap :api-key="mapsapi" style="width: 700px; height: 700px; position: absolute; right: 0 ; bottom: 0;" :center="center" :zoom="12" v-bind:options="mapStyle">
   <Marker :options="{ position: center }" />
 </GoogleMap>
+</template> -->
+
+<template>
+  <div class="map-container">
+    <GoogleMap :api-key="mapsapi" style="width: 100%; height: 100%;" :center="center" :zoom="12" v-bind:options="mapStyle">
+      <Marker :options="{ position: center }" />
+    </GoogleMap>
+  </div>
 </template>
 
 <script>
@@ -21,12 +29,17 @@ export default defineComponent({
 });
 </script>
 
+
 <style scoped>
 .map-container {
-  flex: 1; /* Adjust the size of the map */
-  border-radius: 15px; /* Add a curved border around the map */
-  overflow: hidden; /* Hide any overflow from map content */
-  margin-left: 20px; /* Add some spacing from the search bar */
-  background-color: #ffffff; /* Optional: set the background color of the map */
+  width: 800px; 
+  height: 700px; 
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-left: 60px;
+  background-color: #968282; /* Set the background color of the map container */
 }
 </style>
