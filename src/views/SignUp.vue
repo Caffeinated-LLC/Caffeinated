@@ -1,22 +1,3 @@
-<!-- <template>
-    <div class="Signup">
-      <title>Signup</title>
-      <header>Create an account!</header>
-  
-      <div class="wrapper">
-        <input type="text" v-model="user.name" placeholder="Username" />
-        <input type="text" v-model="user.email" placeholder="Email" />
-        <input type="password" v-model="user.password" placeholder="Password" />
-        <RouterLink to="/Login">
-          <button @click="createAccount()">Create Account</button>
-        </RouterLink>
-        <h3>Have an account? Click this button to Log in!</h3>
-        <RouterLink to="/Login"><button>Log In </button></RouterLink>
-      </div>
-    </div>
-  </template> -->
-
-
 <template>
     <div class="signup-screen">
       <!-- Logo area -->
@@ -54,7 +35,9 @@
       </div>
     </div>
   </template>
-  s
+  </template>
+  
+
   <script>
   import { ref } from "vue";
   import { auth, db } from "../firebaseResources";
@@ -90,6 +73,7 @@
     goToSignIn() {
       window.location.href = "/login";
     },
+
       async createAccount() {
         try {
           console.log("creating...");
@@ -112,6 +96,7 @@
   </script>
   
   <style scoped>
+
   .signup-screen {
     display: flex;
     flex-direction: column;
@@ -187,8 +172,5 @@
     background-color: #582927;
   }
   </style>
-  
-  
-  
   
   

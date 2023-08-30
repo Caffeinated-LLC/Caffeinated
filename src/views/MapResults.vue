@@ -18,8 +18,9 @@ import { Loader } from "@googlemaps/js-api-loader";
 
     <div :class="$style.mapfiltersHigh">
       <div :class="$style.rectangleParent">
-        <RouterLink to="/login" class="$style.groupChild">
-          Register
+        <RouterLink to="/login">
+          <!-- Use a button element with the specified styling -->
+          <button class="$style.groupChild">Register</button>
         </RouterLink>
       </div>
       <div :class="$style.locations">Locations</div>
@@ -62,6 +63,8 @@ import { Loader } from "@googlemaps/js-api-loader";
 
 .container {
   display: flex;
+  top: 40px;
+  right: 50px;
   justify-content: space-between;
   padding: 20px; 
 }
@@ -71,11 +74,11 @@ import { Loader } from "@googlemaps/js-api-loader";
   margin-right: 20px; 
 }
 
-.map {
-  flex: 1; 
-  border-radius: 15px; /* Add a curved border around the map */
+/* .map {
+  flex: 5; 
+  border-radius: 15px; 
   overflow: hidden; 
-}
+} */
 
     .groupChild {
       position: absolute;
@@ -91,17 +94,19 @@ import { Loader } from "@googlemaps/js-api-loader";
   align-items: center;
   justify-content: flex-start;
   height: 100vh;
-  background-color: #fff4e6;
+  
   font-size: var(--font-size-xl);
   color: var(--color-black);
   font-family: var(--font-jost); */
 
     }
     .register {
-      position: absolute;
-      top: 8px;
-      left: 38px;
-      font-weight: 300;
+        background-color: #854442;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
     }
     .rectangleParent {
       position: absolute;
