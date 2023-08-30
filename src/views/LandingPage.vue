@@ -25,13 +25,13 @@
       this.$router.push("/about");
     },
     onFindCoffeeClick() {
-      this.$router.push("/detailedresults");
+      this.$router.push("/map");
     },
     onAddCafeClick() {
       this.$router.push("/db");
     },
     onRegisterClick() {
-      this.$router.push("/db");
+      this.$router.push("/login");
     },
   },
   });

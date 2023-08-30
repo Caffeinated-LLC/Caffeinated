@@ -31,7 +31,7 @@
               <br>
               <text>Don't have an account? Click this button to sign up!</text>
               <div style="margin-top: 10px;"></div>
-              <RouterLink to="/Signup"><button>Sign Up</button></RouterLink>
+              <RouterLink to="/signup"><button>Sign Up</button></RouterLink>
       </template>
 
       <template v-if="authStore.user">

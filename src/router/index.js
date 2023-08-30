@@ -16,11 +16,6 @@ const router = createRouter({
       component: HomeView
     },*/
     {
-      path: '/signup',
-      name: 'signup',
-      component: () => import('../views/SignUp.vue'),
-    },
-    {
       path: '/map',
       name: 'map',
       component: () => import('../views/MapResults.vue'),
@@ -38,13 +33,13 @@ const router = createRouter({
     {
       path: '/login',
       name: 'login',
-      component: () => import('../views/Login.vue'),
+      component: () => import('../views/LoginScreen.vue'),
     },
-    {
-      path: '/user',
-      name: 'user',
-      component: () => import('../views/UserInfo.vue'),
-    },
+    // {
+    //   path: '/user',
+    //   name: 'user',
+    //   component: () => import('../views/UserInfo.vue'),
+    // },
     {
       path: '/db',
       name: 'database',
