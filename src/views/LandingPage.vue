@@ -25,7 +25,7 @@
       this.$router.push("/about");
     },
     onFindCoffeeClick() {
-      this.$router.push("/detailedresults");
+      this.$router.push("/filter");
     },
     onAddCafeClick() {
       this.$router.push("/db");
