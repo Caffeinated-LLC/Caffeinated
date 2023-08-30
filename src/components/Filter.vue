@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <!-- <div>
       <h2>Café Results</h2>
       <label for="filter">Select Filter:</label>
       <select v-model="filter" id="filter">
@@ -9,11 +9,71 @@
       <ul>
         <li v-for="cafe in filteredCafes" :key="cafe.id">{{ cafe.name }}</li>
       </ul>
-    </div>
+    </div> -->
+    <div>
+    <label for="filter">Select a filter: </label>
+    <select v-model="filter" id="filter">
+      <option value="">None</option>
+      <option value="Wifi">WiFi</option>
+      <option value="Tea available">Tea available</option>
+    </select>
+
+    <ul v-if="filter !== ''">
+      <li v-for="cafe in filteredCafes" :key="cafe.id">
+        {{ cafe.name }} - WiFi: {{ cafe.hasWifi ? 'Yes' : 'No' }} | Tea: {{ cafe.hasTea ? 'Yes' : 'No' }}
+      </li>
+    </ul>
+  </div>
   </template>
   
-  <script>
-  import { ref, onMounted } from 'vue';
+<script>
+import { ref } from 'vue';
+import { db } from '../firebaseResources';
+import { query, collection, getDocs } from 'firebase/firestore';
+
+export default {
+  data() {
+    return {
+      filter: '',
+      cafeDataFromFirebase: []
+    };
+  },
+  async created() {
+    try {
+      this.cafeDataFromFirebase = await this.fetchCafeDataFromFirestore();
+    } catch (error) {
+      console.error('Error fetching cafe data:', error);
+    }
+  },
+  methods: {
+    async fetchCafeDataFromFirestore() {
+      const q = query(collection(db, 'cafes'));
+      const queryResponse = await getDocs(q);
+      const cafes = queryResponse.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      return cafes;
+    }
+  },
+  computed: {
+    filteredCafes() {
+      const filteredCafes = this.cafeDataFromFirebase.filter(cafe => {
+        const lowerCaseName = cafe.name.toLowerCase();
+        return !(lowerCaseName.includes('starbucks') || lowerCaseName.includes('coffee bean'));
+      });
+
+      if (this.filter === 'wifi') {
+        filteredCafes.sort((a, b) => b.hasWifi - a.hasWifi);
+      } else if (this.filter === 'tea') {
+        filteredCafes.sort((a, b) => b.hasTea - a.hasTea);
+      }
+
+      return filteredCafes;
+    }
+  }
+};
+  </script>
+  
+
+  <!-- import { ref, onMounted } from 'vue';
   import { db } from '../firebaseResources'; // Import the db instance from your firebaseResources.js file
   import { query, collection, where } from 'firebase/firestore'
   
@@ -60,9 +120,20 @@
         return filteredCafes;
       }
     }
-  };
-  </script>
-  
+  }; -->
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <!-- export default {
