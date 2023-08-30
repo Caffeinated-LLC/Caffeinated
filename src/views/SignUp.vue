@@ -30,20 +30,22 @@
       </div>
       <div class="form">
         <div class="input-container">
-          <label for="username">Userame</label>
-          <input type="text" id="username" v-model="username" />
+          <label for="user.name">Username</label>
+          <input type="text" id="user.name" v-model="user.name" />
         </div>
 
         <div class="input-container">
           <label for="email">Email</label>
-          <input type="text" id="email" v-model="email" />
+          <input type="text" id="user.email" v-model="user.email" />
         </div>
         
         <div class="input-container">
-          <label for="password">Password</label>
-          <input type="password" id="password" v-model="password" />
+          <label for="user.password">Password</label>
+          <input type="password" id="user.password" v-model="user.password" />
         </div>
-        <RouterLink to="/login"><button class="sign-up-button">Sign Up</button></RouterLink>
+   <RouterLink to="/Login">
+          <button @click="createAccount()">Create Account</button>
+        </RouterLink>
       <div style="margin-top: 10px;"></div>
         <!-- <button class="sign-up-button" @click="signUp">Sign Up</button>
         <div style="margin-top: 10px;"></div> -->
