@@ -172,5 +172,3 @@
     background-color: #582927;
   }
   </style>
-  
-  
