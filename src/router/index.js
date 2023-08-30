@@ -26,6 +26,11 @@ const router = createRouter({
       component: () => import('../views/MapResults.vue'),
     },
     {
+      path: '/filter',
+      name: 'filter',
+      component: () => import('../views/Filtering.vue'),
+    },
+    {
       path: '/about',
       name: 'about',
       component: () => import('../views/AboutView.vue'),

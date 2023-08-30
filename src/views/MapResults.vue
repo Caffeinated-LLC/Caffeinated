@@ -2,27 +2,33 @@
 <script setup>
 // import TheWelcome from '../components/TheWelcome.vue'
 import Maps from '../components/Maps.vue';
+import Filter from '../components/Filter.vue';
 import { Loader } from "@googlemaps/js-api-loader";
 </script>
 
 <template>
+<main>
+    <Filter />
+    <!-- <StoreCafes /> -->
+  </main>
+
     <main>
         <div class="container">
-      <div class="search-bar">
+      <!-- <div class="search-bar">
         <SearchBar />
-      </div>
+      </div> -->
       <div class="map">
         <Maps />
       </div>
     </div>
 
     <div :class="$style.mapfiltersHigh">
-      <div :class="$style.rectangleParent">
+      <!-- <div :class="$style.rectangleParent">
         <RouterLink to="/login">
-          <!-- Use a button element with the specified styling -->
           <button class="$style.groupChild">Register</button>
         </RouterLink>
-      </div>
+      </div> -->
+      <div :class="$style.letsGetCaffeinated">Let’s get caffeinated.</div>
       <div :class="$style.locations">Locations</div>
       <div :class="$style.aboutUs" @click="onAboutUsTextClick">
         <RouterLink to="/about-us">About Us</RouterLink>
@@ -36,9 +42,10 @@ import { Loader } from "@googlemaps/js-api-loader";
           @click="onCaffEINATED21Click"
         />
       </RouterLink>
-      <RouterLink to="/landing-page">
-        <img :class="$style.icon" alt="" src="/3-1@2x.png" />
-      </RouterLink>
+
+      <div class="back-button" @click="goToLandingPage">
+      <img src="/arrow-1.svg" alt="Back" />
+    </div>
     </div>
     </main>
   </template>
@@ -49,6 +56,9 @@ import { Loader } from "@googlemaps/js-api-loader";
     export default defineComponent({
       name: "MapfiltersHigh",
       methods: {
+        goToLandingPage() {
+      window.location.href = "/";
+    },
         onGroupContainerClick() {
         
         },
@@ -69,10 +79,10 @@ import { Loader } from "@googlemaps/js-api-loader";
   padding: 20px; 
 }
 
-.search-bar {
+/* .search-bar {
   flex: 1;
   margin-right: 20px; 
-}
+} */
 
 /* .map {
   flex: 5; 
@@ -101,14 +111,14 @@ import { Loader } from "@googlemaps/js-api-loader";
 
     }
     .register {
-        background-color: #854442;
+ background-color: #854442;
   color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
     }
-    .rectangleParent {
+    /* .rectangleParent {
       position: absolute;
       top: 82px;
       left: 1050px;
@@ -116,7 +126,7 @@ import { Loader } from "@googlemaps/js-api-loader";
       height: 45px;
       cursor: pointer;
       color: var(--color-oldlace);
-    }
+    } */
     .locations {
       position: absolute;
       top: 104px;
@@ -163,6 +173,14 @@ import { Loader } from "@googlemaps/js-api-loader";
       height: 375px;
       object-fit: cover;
     } */
+    .back-button {
+  position: absolute;
+  top: 40px;
+  left: 50px;
+  cursor: pointer;
+  width: 30px; /* Reduce the width */
+  height: 30px; /* Reduce the height */
+}
     .mapfiltersHigh {
       /* position: relative;
       background-color: var(--color-oldlace);

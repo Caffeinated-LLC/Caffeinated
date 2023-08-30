@@ -129,8 +129,8 @@
     top: 40px;
     left: 50px;
     cursor: pointer;
-    width: 30px; /* Reduce the width */
-    height: 30px; /* Reduce the height */
+    width: 30px; 
+    height: 30px; 
   }
   
   .form {

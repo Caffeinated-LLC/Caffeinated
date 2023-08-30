@@ -1,18 +1,36 @@
+<script setup>
+import Maps from '../components/Maps.vue';
+import Filter from '../components/Filter.vue';
+// import { Loader } from "@googlemaps/js-api-loader";
+</script>
+
 <template>
+    <main>
+    <Filter />
+    <!-- <StoreCafes /> -->
+   
+    <Maps />
+
   <div :class="$style.landingHigh">
     <div :class="$style.rectangleParent">
       <div :class="$style.groupChild" />
       <div :class="$style.register" @click="onRegisterClick">Register</div>
     </div>
-    <img :class="$style.caffeinated31" alt="main pic" src="@/assets/mainpic.png" />
-    <div :class="$style.caffeinated">CAFFEINATED</div>
-    <div :class="$style.letsGetCaffeinated">Let’s get caffeinated.</div>
-    <div :class="$style.findCoffee" @click="onFindCoffeeClick">Find Coffee</div>
+    
     <div :class="$style.add" @click="onAddCafeClick">Add Cafe</div>    
     <div :class="$style.aboutUs" @click="onAboutUsTextClick">About Us</div>
+    <div class="back-button" @click="onLogoClick">
+        <img src="/arrow-1.svg" alt="Back" />
+      </div>
     <div :class="$style.landingHighChild" />
-    <img :class="$style.caffeinated21" alt="logo" src="@/assets/logo.png" />
+    <img
+      :class="$style.caffeinated21"
+      alt="logo"
+      src="@/assets/logo.png"
+      @click="onLogoClick"
+    />
   </div>
+</main>
 </template>
 <script>
   import { defineComponent } from "vue";
@@ -21,12 +39,15 @@
   export default defineComponent({
     name: "Frame",
     methods: {
+        onLogoClick() {
+      this.$router.push("/");
+    },
     onAboutUsTextClick() {
       this.$router.push("/about");
     },
-    onFindCoffeeClick() {
-      this.$router.push("/detailedresults");
-    },
+    // onFindCoffeeClick() {
+    //   this.$router.push("/detailedresults");
+    // },
     onAddCafeClick() {
       this.$router.push("/db");
     },
@@ -38,6 +59,13 @@
 </script>
 
 <style module>
+.container {
+  display: flex;
+  top: 40px;
+  right: 50px;
+  justify-content: space-between;
+  padding: 20px; 
+}
   .groupChild {
     position: absolute;
     top: 0px;
@@ -48,12 +76,19 @@
     height: 45px;
     border-radius: 10px;
   }
+  .back-button {
+    position: absolute;
+    top: 40px;
+    left: 50px;
+    cursor: pointer;
+    width: 30px; 
+    height: 30px; 
+  }
   .register {
     position: absolute;
     top: 8px;
     left: 38px;
     font-weight: 300;
-    cursor: pointer;
   }
   .rectangleParent {
     position: absolute;
@@ -62,7 +97,6 @@
     width: 141px;
     height: 45px;
     color: var(--color-oldlace);
-    
   }
   .caffeinated31 {
     position: absolute;
@@ -71,6 +105,7 @@
     width: 801px;
     height: 601px;
     object-fit: cover;
+    
   }
   .caffeinated {
     position: absolute;
@@ -83,7 +118,7 @@
     width: 626px;
     height: 131px;
   }
-  .letsGetCaffeinated {
+  /* .letsGetCaffeinated {
     position: absolute;
     top: 553px;
     left: 394px;
@@ -93,8 +128,8 @@
     display: inline-block;
     width: 401px;
     height: 42px;
-  }
-  .findCoffeeChild {
+  } */
+  /* .findCoffeeChild {
     position: absolute;
     top: 0px;
     left: 0px;
@@ -103,7 +138,7 @@
     width: 353.94px;
     height: 80px;
     cursor: pointer;
-  }
+  } */
   .findCoffee1 {
     position: absolute;
     top: 20.76px;
@@ -165,7 +200,6 @@
     background-color: var(--color-sienna);
     width: 100%;
     height: 122px;
-
   }
   .caffeinated21 {
     position: absolute;
@@ -174,8 +208,9 @@
     width: 206px;
     height: 206px;
     object-fit: cover;
+    cursor: pointer;
   }
-  .icon {
+  .logo {
     position: absolute;
     top: 550px;
     left: 0px;
