@@ -1,167 +1,84 @@
 <template>
-    <!-- <div>
-      <h2>Café Results</h2>
-      <label for="filter">Select Filter:</label>
-      <select v-model="filter" id="filter">
-        <option value="wifi">Wifi</option>
-        <option value="tea">Tea available</option>
-      </select>
-      <ul>
-        <li v-for="cafe in filteredCafes" :key="cafe.id">{{ cafe.name }}</li>
-      </ul>
-    </div> -->
     <div>
-    <label for="filter">Select a filter: </label>
-    <select v-model="filter" id="filter">
-      <option value="">None</option>
-      <option value="Wifi">WiFi</option>
-      <option value="Tea available">Tea available</option>
-    </select>
-
-    <ul v-if="filter !== ''">
-      <li v-for="cafe in filteredCafes" :key="cafe.id">
-        {{ cafe.name }} - WiFi: {{ cafe.hasWifi ? 'Yes' : 'No' }} | Tea: {{ cafe.hasTea ? 'Yes' : 'No' }}
-      </li>
-    </ul>
-  </div>
+      <label for="filter">Select a filter: </label>
+      <select v-model="filter" id="filter">
+        <option value="">None</option>
+        <option value="wifi">WiFi</option>
+        <option value="tea">Tea</option>
+      </select>
+  
+      <ul v-if="filter !== ''">
+        <li v-for="cafe in filteredCafes" :key="cafe.id">
+          {{ cafe.name }} - WiFi: {{ cafe.hasWifi ? 'Yes' : 'No' }} | Tea: {{ cafe.hasTea ? 'Yes' : 'No' }}
+        </li>
+      </ul>
+    </div>
   </template>
   
-<script>
-import { ref } from 'vue';
-import { db } from '../firebaseResources';
-import { query, collection, getDocs } from 'firebase/firestore';
-
-export default {
-  data() {
-    return {
-      filter: '',
-      cafeDataFromFirebase: []
-    };
-  },
-  async created() {
-    try {
-      this.cafeDataFromFirebase = await this.fetchCafeDataFromFirestore();
-    } catch (error) {
-      console.error('Error fetching cafe data:', error);
-    }
-  },
-  methods: {
-    async fetchCafeDataFromFirestore() {
-      const q = query(collection(db, 'cafes'));
-      const queryResponse = await getDocs(q);
-      const cafes = queryResponse.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-      return cafes;
-    }
-  },
-  computed: {
-    filteredCafes() {
-      const filteredCafes = this.cafeDataFromFirebase.filter(cafe => {
-        const lowerCaseName = cafe.name.toLowerCase();
-        return !(lowerCaseName.includes('starbucks') || lowerCaseName.includes('coffee bean'));
-      });
-
-      if (this.filter === 'wifi') {
-        filteredCafes.sort((a, b) => b.hasWifi - a.hasWifi);
-      } else if (this.filter === 'tea') {
-        filteredCafes.sort((a, b) => b.hasTea - a.hasTea);
-      }
-
-      return filteredCafes;
-    }
-  }
-};
-  </script>
-  
-
-  <!-- import { ref, onMounted } from 'vue';
-  import { db } from '../firebaseResources'; // Import the db instance from your firebaseResources.js file
-  import { query, collection, where } from 'firebase/firestore'
+  <script>
+  import { ref } from 'vue';
+  import { db } from '../firebaseResources';
+  import { query, collection, where, getDocs } from 'firebase/firestore';
   
   export default {
     data() {
       return {
-        city: '', // User-selected city
-        filter: '', // User-selected filter (e.g., wifi, tea)
-        cafeDataFromFirebase: [] // Café data from Firebase
+        filter: '',
+        cafeDataFromFirebase: []
       };
     },
     async created() {
-    try {
-      this.cafeDataFromFirebase = await this.fetchCafeDataFromFirestore(this.city);
-    } catch (error) {
-      console.error('Error fetching cafe data:', error);
-    }
-  },
+      try {
+        this.cafeDataFromFirebase = await this.fetchCafeDataFromFirestore();
+      } catch (error) {
+        console.error('Error fetching cafe data:', error);
+      }
+    },
     methods: {
-      async fetchCafeDataFromFirestore(city) {
-        const snapshot = await query(collection(db, 'cafes'), where('city', '==', city));
-        const cafes = [];
-        snapshot.forEach(doc => {
-          cafes.push({ id: doc.id, ...doc.data() });
-        });
+      async fetchCafeDataFromFirestore() {
+        const q = query(collection(db, 'cafes'));
+        const queryResponse = await getDocs(q);
+        const cafes = queryResponse.docs.map(doc => ({ id: doc.id, ...doc.data() }));
         return cafes;
       }
     },
     computed: {
       filteredCafes() {
-        // Filter out Starbucks and Coffee Bean
         const filteredCafes = this.cafeDataFromFirebase.filter(cafe => {
           const lowerCaseName = cafe.name.toLowerCase();
-          return !(lowerCaseName.includes('starbucks') || lowerCaseName.includes('coffee bean'));
+          return lowerCaseName;  // !(lowerCaseName.includes('starbucks') || lowerCaseName.includes('coffee bean'));
         });
   
-        // Sort the cafes based on the selected filter
-        if (this.filter === 'Wifi') {
-          filteredCafes.sort((a, b) => b.hasWifi - a.hasWifi);
-        } else if (this.filter === 'Tea available') {
-          filteredCafes.sort((a, b) => b.hasTea - a.hasTea);
-        }
+        filteredCafes.sort((a, b) => {
+          if (this.filter === 'wifi') {
+            if (b.hasWifi && !a.hasWifi) return 1;
+            if (!b.hasWifi && a.hasWifi) return -1;
+          } else if (this.filter === 'tea') {
+            if (b.hasTea && !a.hasTea) return 1;
+            if (!b.hasTea && a.hasTea) return -1;
+          }
+          
+          // Default sorting: cafes without WiFi or tea come after those with WiFi or tea
+          return (b.hasWifi || b.hasTea) - (a.hasWifi || a.hasTea);
+        });
   
-        return filteredCafes;
-      }
-    }
-  }; -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- export default {
-    data() {
-      return {
-        city: '', // User-selected city
-        filter: '', // User-selected filter (e.g., relevance, rating)
-        cafeLocations: [], // Fetched café locations from Google Places API
-        cafeDataFromFirebase: [] // Café data from Firebase
-      };
-    },
-    async created() {
-      this.cafeLocations = await fetchCafeLocations(this.city);
-      this.cafeDataFromFirebase = await fetchCafeDataFromFirebase(this.city);
-    },
-    computed: {
-      filteredCafes() {
-        // Combine café data from both sources
-        const allCafes = [...this.cafeLocations, ...this.cafeDataFromFirebase];
-  
-        // Filter out Starbucks and Coffee Bean
-        const filteredCafes = allCafes.filter(cafe => {
+        // Move Starbucks and Coffee Bean cafes to the end
+        const starbucksAndCoffeeBean = filteredCafes.filter(cafe => {
           const lowerCaseName = cafe.name.toLowerCase();
-          return !(lowerCaseName.includes('starbucks') || lowerCaseName.includes('coffee bean'));
+          return lowerCaseName.includes('starbucks') || lowerCaseName.includes('coffee bean');
         });
   
-        // Apply user-selected filter
-        return filteredCafes.filter(cafe => cafe.characteristics.includes(this.filter));
+        const otherCafes = filteredCafes.filter(cafe => {
+          const lowerCaseName = cafe.name.toLowerCase();
+          return !lowerCaseName.includes('starbucks') && !lowerCaseName.includes('coffee bean');
+        });
+  
+        return [...otherCafes, ...starbucksAndCoffeeBean];
       }
     }
-  }; -->
+  };
+  </script>
+  
+  
+
+ 
