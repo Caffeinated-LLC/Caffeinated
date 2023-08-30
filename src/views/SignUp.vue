@@ -43,14 +43,16 @@
           <label for="password">Password</label>
           <input type="password" id="password" v-model="password" />
         </div>
-        <button class="sign-up-button" @click="signUp">Sign Up</button>
-        <div style="margin-top: 10px;"></div>
+        <RouterLink to="/login"><button class="sign-up-button">Sign Up</button></RouterLink>
+      <div style="margin-top: 10px;"></div>
+        <!-- <button class="sign-up-button" @click="signUp">Sign Up</button>
+        <div style="margin-top: 10px;"></div> -->
         <h3>Have an account? Click this button to Log in!</h3>
         <RouterLink to="/Login"><button>Log In </button></RouterLink>
       </div>
     </div>
   </template>
-  
+  s
   <script>
   import { ref } from "vue";
   import { auth, db } from "../firebaseResources";
