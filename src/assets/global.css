@@ -1,6 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Jost:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Jost:wght@300;500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lalezar:wght@400&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inria+Serif:wght@400&display=swap");
 body {
   margin: 0;
@@ -10,6 +10,7 @@ body {
   /* fonts */
   --font-jost: Jost;
   --font-inter: Inter;
+
   --font-lalezar: Lalezar;
   --font-inria-serif: "Inria Serif";
 
@@ -23,10 +24,7 @@ body {
   --color-black: #000;
 
   /* border radiuses */
-  --br-6xs: 7px;
-  --br-xl: 20px;
+  --br-3xs: 10px;
+  --br-5xs: 8px;
 
-  
 }
-
-

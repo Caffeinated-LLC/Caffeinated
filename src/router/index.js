@@ -15,6 +15,21 @@ const router = createRouter({
       name: 'home',
       component: HomeView
     },
+    // {
+    //   path: '/about',
+    //   name: 'about',
+    //   component: () => import('../views/AboutView.vue'),
+    // },
+    // {
+    //   path: '/signup',
+    //   name: 'signup',
+    //   component: () => import('../views/SignUp.vue'),
+    // },
+    {
+      path: '/map',
+      name: 'map',
+      component: () => import('../views/MapResults.vue'),
+    },
     {
       path: '/about',
       name: 'about',
@@ -50,7 +65,6 @@ const router = createRouter({
       name: 'detailed',
       component: () => import('../views/DetailedResults.vue'),
     },
-   
   ]
 })
  
