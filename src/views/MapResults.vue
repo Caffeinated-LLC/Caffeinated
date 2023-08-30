@@ -23,7 +23,8 @@ import { Loader } from "@googlemaps/js-api-loader";
           <button class="$style.groupChild">Register</button>
         </RouterLink>
       </div>
-      <div :class="$style.locations">Locations</div>
+      <!--<div :class="$style.locations">Locations</div>-->
+      <div :class="$style.add" @click="onAddCafeClick">Add Cafe</div>    
       <div :class="$style.aboutUs" @click="onAboutUsTextClick">
         <RouterLink to="/about">About Us</RouterLink>
       </div>
@@ -56,6 +57,10 @@ import { Loader } from "@googlemaps/js-api-loader";
         },
         onCaffEINATED21Click() {
         },
+        onAddCafeClick() {
+          this.$router.push("/db");
+        },
+        
       },
     });
   </script>
@@ -123,6 +128,13 @@ import { Loader } from "@googlemaps/js-api-loader";
       left: 282px;
       font-weight: 300;
     }
+
+    .add {
+    position: absolute;
+    top: 104px;
+    left: 282px;
+    font-weight: 300;
+   }
     .aboutUs {
       position: absolute;
       top: 104px;
