@@ -11,7 +11,7 @@ const router = createRouter({
   routes: [
     {
 
-      path: '/',
+      path: '/home',
       name: 'home',
       component: HomeView
     },
@@ -41,7 +41,7 @@ const router = createRouter({
       component: DbView
     },
     {
-      path: '/landing',
+      path: '/',
       name: 'landing',
       component: () => import('../views/LandingPage.vue'),
     },
