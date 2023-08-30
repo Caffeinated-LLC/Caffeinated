@@ -35,14 +35,15 @@
       </template>
 
       <template v-if="authStore.user">
-          <title>Sign out</title>
-          <div style="margin-top: 160px;"></div>
-              <RouterLink to="/Login"><button @click="logout()">Sign Out</button></RouterLink>
-              <div style="margin-top: 50px;"></div>
-              <title>Write a review</title>
-              <RouterLink to="/Login"><button @click="">Write a review</button></RouterLink>
-              <div style="margin-top: 30px;"></div>
-      </template>
+  <title>Sign out</title>
+  <div style="margin-top: 160px;"></div>
+  <RouterLink to="/Login"><button @click="logout()">Sign Out</button></RouterLink>
+  <div style="margin-top: 50px;"></div>
+  <title>Write a review</title>
+  <RouterLink to="/landing"><button>Write a review</button></RouterLink>
+  <div style="margin-top: 30px;"></div>
+</template>
+
   </div>
 </div>
 </template>
@@ -77,6 +78,9 @@
                 })
             },
         methods:{
+          goToLandingPage() {
+      window.location.href = "/";
+    },
             async login(){
                 try{
                     this.notFound = false;
@@ -109,6 +113,9 @@
         }
     }
 </script>
+
+
+
 
 <style scoped>
 .login-screen {

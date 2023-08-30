@@ -42,11 +42,11 @@ const router = createRouter({
     //   name: 'database',
     //   component: DbView
     // },
-    // {
-    //   path: '/landing',
-    //   name: 'landing',
-    //   component: () => import('../views/LandingPage.vue')
-    // }
+    {
+      path: '/landing',
+      name: 'landing',
+      component: () => import('../views/HomeView.vue')
+    }
   ]
 })
 
