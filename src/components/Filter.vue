@@ -104,37 +104,38 @@
  
   <style scoped>
   .filter-container {
-    position: fixed;
-    top: 20px; /* Adjust the top position as needed */
-    left: 20px; /* Adjust the left position as needed */
-    background-color: #f0f0f0;
-    padding: 10px;
+
+    position: absolute;
+    top: 200px; /* Adjust the top position as needed */
+    left: 130px; /* Adjust the left position as needed */
+    background-color: #fbf5f2;
+    padding: 40px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    z-index: 999; /* Ensure it's above other content */
+    z-index: 100; /* Ensure it's above other content */
   }
   
   label {
     margin-right: 10px;
+    color: #854442
   }
   
   .cafe-list {
-    list-style-type: none;
-    padding: 0;
+    list-style-type: circle;
+    padding: 5;
+    
+    
   }
   
   .cafe-list li {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+  
   }
   
   </style>
-  <!-- In this code, I added a filter-container class to the outer div of your component to apply styling. I positioned it fixed to the top-left corner of the screen and added some background color, padding, border, and box shadow for a styled appearance. You can adjust the top and left values to position it precisely where you want.
-  
-  Additionally, I added some styling to the ul and li elements to format the list nicely. The scoped attribute in the <style> tag ensures that the styles are scoped to this component only.
-  
-  
-   -->
+
+
   
   
   

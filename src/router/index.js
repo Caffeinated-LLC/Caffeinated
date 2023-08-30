@@ -16,9 +16,9 @@ const router = createRouter({
       component: HomeView
     },*/
     {
-      path: '/map',
-      name: 'map',
-      component: () => import('../views/MapResults.vue'),
+      path: '/filter',
+      name: 'filter',
+      component: () => import('../views/Filtering.vue'),
     },
     {
       path: '/about',
