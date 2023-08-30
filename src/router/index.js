@@ -15,16 +15,11 @@ const router = createRouter({
       name: 'home',
       component: HomeView
     },
-    // {
-    //   path: '/about',
-    //   name: 'about',
-    //   component: () => import('../views/AboutView.vue'),
-    // },
-    // {
-    //   path: '/signup',
-    //   name: 'signup',
-    //   component: () => import('../views/SignUp.vue'),
-    // },
+    {
+      path: '/signup',
+      name: 'signup',
+      component: () => import('../views/SignUp.vue'),
+    },
     {
       path: '/map',
       name: 'map',
@@ -65,6 +60,13 @@ const router = createRouter({
       name: 'detailed',
       component: () => import('../views/DetailedResults.vue'),
     },
+
+//     {
+//       path: '/landing',
+//       name: 'landing',
+//       component: () => import('../views/HomeView.vue')
+//     }
+
   ]
 })
  
