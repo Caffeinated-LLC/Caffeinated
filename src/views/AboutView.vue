@@ -129,7 +129,7 @@
     top: 1612px;
     left: 0px;
     background-color: var(--color-sienna);
-    width: 1254px;
+    width: 100%;
     height: 122px;
   }
 

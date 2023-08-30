@@ -31,10 +31,9 @@
         <!-- <button class="sign-up-button" @click="signUp">Sign Up</button>
         <div style="margin-top: 10px;"></div> -->
         <h3>Have an account? Click this button to Log in!</h3>
-        <RouterLink to="/Login"><button>Log In </button></RouterLink>
+        <RouterLink to="/login"><button>Log In </button></RouterLink>
       </div>
     </div>
-  </template>
   </template>
   
 
