@@ -1,5 +1,5 @@
 <template>
-  <GoogleMap :api-key="mapsapi" style="width: 500px; height: 500px; flex: 1" :center="center" :zoom="12">
+  <GoogleMap :api-key="mapsapi" style="width: 500px; height: 500px; flex: 2" :center="center" :zoom="12">
   <Marker :options="{ position: center }" />
 </GoogleMap>
 </template>
@@ -21,7 +21,7 @@ export default defineComponent({
 });
 </script>
 
-<!-- <style scoped>
+<style scoped>
 .map-container {
   flex: 1; /* Adjust the size of the map */
   border-radius: 15px; /* Add a curved border around the map */
@@ -29,4 +29,4 @@ export default defineComponent({
   margin-left: 20px; /* Add some spacing from the search bar */
   background-color: #ffffff; /* Optional: set the background color of the map */
 }
-</style> -->
+</style>
