@@ -3,13 +3,14 @@ import HomeView from '../views/HomeView.vue'
 import DbView from '../views/DbView.vue'
 import landing from '../views/LandingPage.vue'
 import about from '../views/AboutView.vue'
+import detailedresults from '../views/DetailedResults.vue'
 
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      
+
       path: '/',
       name: 'home',
       component: HomeView
@@ -42,12 +43,16 @@ const router = createRouter({
     {
       path: '/landing',
       name: 'landing',
-      component: () => import('../views/LandingPage.vue')
+      component: () => import('../views/LandingPage.vue'),
+    },
+    {
+      path: '/detailedresults',
+      name: 'detailed',
+      component: () => import('../views/DetailedResults.vue'),
     },
    
   ]
 })
-
-  
+ 
 
 export default router

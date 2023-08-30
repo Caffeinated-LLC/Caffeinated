@@ -2,40 +2,49 @@
   <div :class="$style.landingHigh">
     <div :class="$style.rectangleParent">
       <div :class="$style.groupChild" />
-      <button @click="onRectangleClick" :class="$style.registerButton">Register</button>
+      <div :class="$style.register">Register</div>
     </div>
-    <img :class="$style.caffeinated31" alt="logo" src="@/assets/logo.png" />
+    <img :class="$style.caffeinated31" alt="main pic" src="@/assets/mainpic.png" />
     <div :class="$style.caffeinated">CAFFEINATED</div>
     <div :class="$style.letsGetCaffeinated">Let’s get caffeinated.</div>
+    <div :class="$style.findCoffee" @click="onFindCoffeeClick">Find coffee</div>
     <div :class="$style.findCoffee">
-      <div :class="$style.findCoffeeChild" @click="onRectangle1Click" />
-      <div :class="$style.findCoffee1">Find coffee!</div>
-      <img :class="$style.vectorIcon" alt="search icon" src="@/assets/search.png" />
+      <button
+        style="
+          padding: 10px 20px;
+          background-color: #854442;
+          color: #fff;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+        "
+      >
+        Find coffee!
+      </button>
+      <!--<img :class="$style.vectorIcon" alt="search" src="@/assets/search.png" />-->
     </div>
-    <div :class="$style.locations">Locations</div>
-    <div :class="$style.aboutUs">About Us</div>
+    <div :class="$style.locations">Locations</div>    
+    <div :class="$style.aboutUs" @click="onAboutUsTextClick">About Us</div>
     <div :class="$style.landingHighChild" />
-    <img :class="$style.caffeinated21" alt="coffee beans" src="@/assets/coffeebeans.png" />
-    <img :class="$style.icon" alt="main pic" src="@/assets/mainpic.png" />
+    <img :class="$style.caffeinated21" alt="logo" src="@/assets/logo.png" />
   </div>
 </template>
+<script lang="ts">
+  import { defineComponent } from "vue";
+  import { useRouter } from "vue-router";
 
-<script>
-import { defineComponent } from "vue";
-import { useRouter } from "vue-router";
-
-export default defineComponent({
-  name: "LandingPage",
-  methods: {
-    onRectangleClick() {
-      const router = useRouter();
-      router.push("/AboutView"); 
+  export default defineComponent({
+    name: "Frame",
+    methods: {
+    onAboutUsTextClick() {
+      this.$router.push("/about");
     },
-    onRectangle1Click() {
-      // Add your logic for rectangle1 click
+    onFindCoffeeClick() {
+      this.$router.push("/detailedresults");
     },
   },
-});
+  });
 </script>
 
 <style module>
@@ -43,7 +52,7 @@ export default defineComponent({
     position: absolute;
     top: 0px;
     left: 0px;
-    border-radius: 7px;
+    border-radius: var(--br-6xs);
     background-color: var(--color-sienna);
     width: 141px;
     height: 45px;
@@ -76,7 +85,7 @@ export default defineComponent({
     left: 282px;
     font-size: 64px;
     font-family: var(--font-lalezar);
-    color: #3a3a3a;
+    color: var(--color-darkslategray);
     display: inline-block;
     width: 626px;
     height: 131px;
@@ -87,7 +96,7 @@ export default defineComponent({
     left: 394px;
     font-size: var(--font-size-11xl);
     font-weight: 300;
-    color: #000;
+    color: var(--color-black);
     display: inline-block;
     width: 401px;
     height: 42px;
@@ -134,6 +143,7 @@ export default defineComponent({
     color: #fef3de;
     font-family: var(--font-inter);
   }
+
   .locations {
     position: absolute;
     top: 104px;
@@ -174,7 +184,7 @@ export default defineComponent({
     position: relative;
     background-color: var(--color-oldlace);
     width: 100%;
-    min-height: 100vh;
+    height: 1734px;
     overflow: hidden;
     text-align: center;
     font-size: var(--font-size-xl);
@@ -182,37 +192,6 @@ export default defineComponent({
     font-family: var(--font-jost);
   }
 
-.landing-page {   
-  display: flex;   
-  flex-direction: column;   
-  align-items: center;   
-  justify-content: flex-start;   
-  min-height: 100vh;   
-  background-color: #fff4e6;   
-  font-size: var(--font-size-xl);   
-  color: var(--color-black);   
-  font-family: var(--font-jost);   
-  padding-top: 20px;  }
-
 </style>
 
 
-<body>
-    <div class="landing-high">
-        <div class="rectangle-parent">
-            <div class="group-child"></div>
-            <div class="register">Register</div>
-        </div>
-        <div class="caffeinated">CAFFEINATED</div>
-        <div class="lets-get-caffeinated">Let’s get caffeinated.</div>
-        <div class="find-coffee">
-            <div class="find-coffee-child" id="rectangle1"></div>
-            <div class="find-coffee1">Find coffee!</div>
-        </div>
-        <div class="locations">Locations</div>
-        <div class="about-us">About Us</div>
-        <div class="landing-high-child"></div>
-    </div>
-
-</body>
-</template>
