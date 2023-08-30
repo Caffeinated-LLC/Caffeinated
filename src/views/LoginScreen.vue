@@ -40,7 +40,7 @@
   <RouterLink to="/Login"><button @click="logout()">Sign Out</button></RouterLink>
   <div style="margin-top: 50px;"></div>
   <title>Write a review</title>
-  <RouterLink to="/landing"><button>Write a review</button></RouterLink>
+  <RouterLink to="/db"><button>Add Cafe</button></RouterLink>
   <div style="margin-top: 30px;"></div>
 </template>
 
@@ -50,6 +50,7 @@
 
 <script>
     import { ref } from "vue";
+    // import {Router} from "vue-router";
     let input = ref("");
 
     import { auth } from '../firebaseResources';
@@ -89,6 +90,7 @@
                     await signInWithEmailAndPassword(auth, this.user.email, this.user.password);
                     this.authStore.setUser(this.user);
                     console.log('successfully logged in!')
+                    this.$router.push("/");
                 }
                 catch(e){
                     console.error('Error in login', e);

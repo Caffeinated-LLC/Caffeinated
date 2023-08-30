@@ -25,7 +25,7 @@
           <img   src="/caffeinated-2-1@2x.png" alt="Your Logo" />
         </div>
       </div>
-      <div class="back-button" @click="goToLandingPage">
+      <div class="back-button" @click="goToSignIn">
         <img src="/arrow-1.svg" alt="Back" />
       </div>
       <div class="form">
@@ -83,6 +83,13 @@
       });
     },
     methods: {
+
+        goToLandingPage() {
+      window.location.href = "/";
+    },
+    goToSignIn() {
+      window.location.href = "/login";
+    },
       async createAccount() {
         try {
           console.log("creating...");
