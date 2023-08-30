@@ -42,6 +42,7 @@ const router = createRouter({
       name: 'landing',
       component: () => import('../views/LandingPage.vue')
     }
+
   ]
 })
 

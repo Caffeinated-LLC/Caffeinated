@@ -13,9 +13,58 @@
   </template>
   
   <script>
-  import { ref, computed, onMounted } from 'vue';
+  import { ref, onMounted } from 'vue';
+  import { db } from '../firebaseResources'; // Import the db instance from your firebaseResources.js file
   
   export default {
+    data() {
+      return {
+        city: '', // User-selected city
+        filter: '', // User-selected filter (e.g., wifi, tea)
+        cafeDataFromFirebase: [] // Café data from Firebase
+      };
+    },
+    async created() {
+    try {
+      this.cafeDataFromFirebase = await this.fetchCafeDataFromFirestore(this.city);
+    } catch (error) {
+      console.error('Error fetching cafe data:', error);
+    }
+  },
+    methods: {
+      async fetchCafeDataFromFirestore(city) {
+        const snapshot = await db.collection('cafes').where('city', '==', city).get();
+        const cafes = [];
+        snapshot.forEach(doc => {
+          cafes.push({ id: doc.id, ...doc.data() });
+        });
+        return cafes;
+      }
+    },
+    computed: {
+      filteredCafes() {
+        // Filter out Starbucks and Coffee Bean
+        const filteredCafes = this.cafeDataFromFirebase.filter(cafe => {
+          const lowerCaseName = cafe.name.toLowerCase();
+          return !(lowerCaseName.includes('starbucks') || lowerCaseName.includes('coffee bean'));
+        });
+  
+        // Sort the cafes based on the selected filter
+        if (this.filter === 'Wifi') {
+          filteredCafes.sort((a, b) => b.hasWifi - a.hasWifi);
+        } else if (this.filter === 'Tea available') {
+          filteredCafes.sort((a, b) => b.hasTea - a.hasTea);
+        }
+  
+        return filteredCafes;
+      }
+    }
+  };
+  </script>
+  
+
+
+<!-- export default {
     data() {
       return {
         city: '', // User-selected city
@@ -43,5 +92,4 @@
         return filteredCafes.filter(cafe => cafe.characteristics.includes(this.filter));
       }
     }
-  };
-  </script>
+  }; -->
