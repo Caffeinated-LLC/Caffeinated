@@ -25,7 +25,7 @@
     <div class="text-box" style="margin-top: 10px; max-width: 75%; margin: 0 auto; text-align: center;">
         Maya Treves: FrontEnd Developer - 
         Rania Saber: FrontEnd Developer - 
-        Siraaj Kadatar: Backend Developer - 
+        Siraaj Kudtarkar: Backend Developer - 
         Kia Nooshi: Backend Developer - 
         Nathan Caridad: Backend Developer - 
     </div>
@@ -40,13 +40,13 @@
     name: "AboutHigh",
     methods: {
       onGroupContainerClick() {
-        // Please sync "landing-high" to the project
+        // empty
       },
       onLocationsTextClick() {
         this.$router.push("/mapfiltershigh");
       },
       onLogoClick() {
-        this.$router.push("/landing");
+        this.$router.push("/");
       },
     },
   });
