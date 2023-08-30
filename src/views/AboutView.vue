@@ -33,7 +33,7 @@
     <img :class="$style.icon" alt="" src="@/assets/coffeebeans.png" />
   </div>
 </template>
-<script lang="ts">
+<script>
   import { defineComponent, ref } from "vue";
 
   export default defineComponent({
@@ -129,7 +129,7 @@
     top: 1612px;
     left: 0px;
     background-color: var(--color-sienna);
-    width: 1254px;
+    width: 100%;
     height: 122px;
   }
 

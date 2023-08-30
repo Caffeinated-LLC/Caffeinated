@@ -104,28 +104,32 @@
  
   <style scoped>
   .filter-container {
-    position: fixed;
-    top: 20px; /* Adjust the top position as needed */
-    left: 20px; /* Adjust the left position as needed */
-    background-color: #f0f0f0;
-    padding: 10px;
+    position: absolute;
+    top: 200px; /* Adjust the top position as needed */
+    left: 130px; /* Adjust the left position as needed */
+    background-color: #fbf5f2;
+    padding: 40px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    z-index: 999; /* Ensure it's above other content */
+    z-index: 100; /* Ensure it's above other content */
   }
   
   label {
     margin-right: 10px;
+    color: #854442
   }
   
   .cafe-list {
-    list-style-type: none;
-    padding: 0;
+    list-style-type: circle;
+    padding: 5;
+    
+    
   }
   
   .cafe-list li {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+  
   }
   
   </style>

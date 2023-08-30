@@ -79,11 +79,6 @@ export default defineComponent({
   setup() {
 
   }
-  // watch: {
-  //   center(response) {
-  //     // You can perform additional actions when the center changes
-  //   },
-  // },
 });
 </script>
 
@@ -94,10 +89,11 @@ export default defineComponent({
   height: 700px; 
   position: absolute;
   right: 0;
+  
   bottom: 0;
   border-radius: 20px;
   overflow: hidden;
-  margin-left: 60px;
-  background-color: #968282; /* Set the background color of the map container */
+  margin-left: 50px;
+  background-color: #968282; 
 }
 </style>
