@@ -238,7 +238,7 @@ button:hover {
       </div>
       <button class="sign-in-button" @click="signIn">Sign in</button>
       <div style="margin-top: 10px;"></div>
-      <router-link to="/create-account">
+      <router-link to="/signup">
         <button class="create-account-button">Create Account</button>
       </router-link>
     </div>
