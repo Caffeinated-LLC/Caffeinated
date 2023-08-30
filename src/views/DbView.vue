@@ -1,5 +1,9 @@
 <template>
     <div class="db">
+      <template v-if="!authStore.user">
+        <h1>Please Login or Make an Account</h1>
+      </template>
+      <template v-if="authStore.user">
       <h1>Add a Cafe</h1>
   
       <!-- Section for Cafe Creation & Update -->
@@ -16,29 +20,22 @@
       <!-- Section for Cafe Query -->
       Filter by City:<input type="text" v-model.trim="cityFilter" />
       <br>
-      <button @click="queryCity()">Query</button>
+      <button @click="queryCity()">Query City</button>
       <template v-for="Cafe in Cafes">
         <p>Cafe Name: {{ Cafe.name || 'Missing Cafe Name' }}
           <br>
           City: {{ Cafe.city || 'Missing City' }}
+          <br>
+          Wifi: {{ Cafe.wifi || 'false' }}
+          <br>
+          Tea: {{ Cafe.tea || 'false' }}
+          <br>
+          <br>
+          
         </p>
       </template>
       <br>
 
-      <!-- Section for Cafe Query -->
-      Wifi Available:<input type="text" v-model.trim="wifiFilter" />
-      <br>
-      <button @click="queryWifi()">Query</button>
-      <template v-for="Cafe in Cafes">
-        <p>Cafe Name: {{ Cafe.name || 'Missing Cafe Name' }}
-          <br>
-          City: {{ Cafe.city || 'Missing City' }}
-          <br>
-          Wifi: {{ Cafe.city || 'Missing Wifi Availability' }}
-        </p>
-      </template>
-      <br>
-  
       <!-- Section for Cafe Read -->
       ID Lookup:<input type="text" v-model.trim="CafeReadId" />
       <br>
@@ -52,11 +49,13 @@
       ID Delete:<input type="text" v-model.trim="CafeDeleteId" />
       <br>
       <button @click="deleteCafe()">Delete</button>
+    </template>
     </div>
   </template>
   
   <script>
   import { db } from '../firebaseResources';
+  import { useAuthStore } from '../stores/auth';
   import {
     collection,
     doc,
@@ -72,6 +71,9 @@
   export default {
     data() {
       return {
+        // data for authstore
+        authStore: useAuthStore(),
+
         // data for display
         Cafes: [],
         readCafesData: null,
@@ -138,7 +140,9 @@
       },
     async updateCafe() {
       if (this.cafeUpdateId != null &&
-        this.cafeDeleteId.length > 0 &&
+        this.cafeUpdateId.length > 0 &&
+        this.city != null &&
+        this.city.length > 0 &&
         this.name != null &&
         this.name.length > 0
       ) {
@@ -156,7 +160,7 @@
               city: this.city,
               name: this.name,
             },
-            // { merge: true }
+            { merge: true }
           );
 
           console.log('Completed updateCafe')
@@ -169,7 +173,7 @@
         try {
           console.log('Calling queryWifi');
           this.Cafes = [];
-          let q = query(collection(db, 'cafes'));
+          let q = query(collection(db, 'wifi'));
           if (this.cityFilter) {
             console.log('Adding filter', this.cityFilter);
             q = query(q, where('wifi', '==', this.cityFilter));
