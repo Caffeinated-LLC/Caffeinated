@@ -35,11 +35,11 @@ const router = createRouter({
       name: 'login',
       component: () => import('../views/LoginScreen.vue'),
     },
-    {
-      path: '/user',
-      name: 'user',
-      component: () => import('../views/UserInfo.vue'),
-    },
+    // {
+    //   path: '/user',
+    //   name: 'user',
+    //   component: () => import('../views/UserInfo.vue'),
+    // },
     {
       path: '/db',
       name: 'database',
