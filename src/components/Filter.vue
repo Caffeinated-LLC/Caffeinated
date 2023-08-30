@@ -104,6 +104,7 @@
  
   <style scoped>
   .filter-container {
+
     position: absolute;
     top: 200px; /* Adjust the top position as needed */
     left: 130px; /* Adjust the left position as needed */
@@ -133,12 +134,8 @@
   }
   
   </style>
-  <!-- In this code, I added a filter-container class to the outer div of your component to apply styling. I positioned it fixed to the top-left corner of the screen and added some background color, padding, border, and box shadow for a styled appearance. You can adjust the top and left values to position it precisely where you want.
-  
-  Additionally, I added some styling to the ul and li elements to format the list nicely. The scoped attribute in the <style> tag ensures that the styles are scoped to this component only.
-  
-  
-   -->
+
+
   
   
   
