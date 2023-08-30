@@ -6,6 +6,7 @@
 
 <template>
   <div class="map-container">
+  <InfoWindow>
     <GoogleMap :api-key="mapsapi" style="width: 100%; height: 100%;" :center="center" :zoom="12" v-bind:options="mapStyle">
       <!-- <Marker v-for="marker in markers" :key="marker.id" :options="{ position: marker.position }" /> -->
       <Marker :options=" {position: cafe1}" />
@@ -17,18 +18,19 @@
       <Marker :options=" {position: cafe7}" />
       <Marker :options=" {position: cafe8}" />
     </GoogleMap>
+    </InfoWindow>
   </div>
 </template>
 
 <script>
 import { defineComponent } from "vue";
-import { GoogleMap, Marker } from "vue3-google-map";
+import { GoogleMap, Marker, InfoWindow } from "vue3-google-map";
 // import { SearchBar } from "./SearchBar.vue"
 // import { geocodeResponse } from "./SearchBar.vue"
 // import { SearchBar } from "./SearchBar.vue"
 
 export default defineComponent({
-  components: { GoogleMap, Marker },
+  components: { GoogleMap, Marker, InfoWindow},
   // props: {
   //   apiKey: import.meta.env.VITE_API_YOUR_GOOGLE_MAPS_API_KEY,
   // },
