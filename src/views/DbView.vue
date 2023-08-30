@@ -1,12 +1,32 @@
 <template>
     <div class="db">
       <template v-if="!authStore.user">
-        <h1>Please Login or Make an Account</h1>
+        <router-link to="/">
+        <div class="logo" @click="goToLandingPage">
+          <img src="@/assets/logo.png" alt="Your Logo" style="max-width: 150px; max-height: 100px; text-align: center; " />
+        </div>
+      </router-link>
+      <router-link to="/">
+    <div class="back-button" @click="goToLandingPage">
+      <img src="/arrow-1.svg" alt="Back" />
+    </div>
+      </router-link>
+        <h1 style="font-size: 25px; margin-top: 200px; text-align: center; display: inline-block; color: sienna ">Please Login or Make an Account</h1>
       </template>
       <template v-if="authStore.user">
-      <h1>Add a Cafe</h1>
-  
+      <p style="font-size: 25px; margin-top: 200px; text-align: center; display: inline-block; color: sienna">Add a Cafe</p>
+      <router-link to="/">
+        <div class="logo" @click="goToLandingPage">
+          <img src="@/assets/logo.png" alt="Your Logo" style="max-width: 150px; max-height: 100px; text-align: center; " />
+        </div>
+      </router-link>
+      <router-link to="/">
+    <div class="back-button" @click="goToLandingPage">
+      <img src="/arrow-1.svg" alt="Back" />
+    </div>
+      </router-link>
       <!-- Section for Cafe Creation & Update -->
+      <br>
       Cafe ID (Update):<input type="text" v-model.trim="cafeUpdateId" />
       <br>
       City:<input type="text" v-model.trim="city" />
@@ -99,6 +119,7 @@
         CafeDeleteId: null,
       };
     },
+    name: "Database",
     methods: {
       async createCafe() {
         if (
@@ -308,6 +329,50 @@
   </script>
   
   <style>
+  .header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.logo {
+    position: absolute;
+    top: 0px;
+    left: 524px;
+    width: 206px;
+    height: 206px;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.back-button {
+  position: absolute;
+  top: 40px;
+  left: 50px;
+  cursor: pointer;
+  color: sienna;
+  width: 30px; 
+  height: 30px; 
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #854442;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
   @media (min-width: 1024px) {
     .about {
       min-height: 100vh;
