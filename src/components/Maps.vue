@@ -1,6 +1,12 @@
+<!-- <template>
+  <GoogleMap :api-key="mapsapi" style="width: 700px; height: 700px; position: absolute; right: 0 ; bottom: 0;" :center="center" :zoom="12" v-bind:options="mapStyle">
+  <Marker :options="{ position: center }" />
+</GoogleMap>
+</template> -->
+
 <template>
-  <div>
-    <GoogleMap :api-key="mapsapi" style="width: 1000px; height: 1000px" :center="center" :zoom="12">
+  <div class="map-container">
+    <GoogleMap :api-key="mapsapi" style="width: 100%; height: 100%;" :center="center" :zoom="12" v-bind:options="mapStyle">
       <!-- <Marker v-for="marker in markers" :key="marker.id" :options="{ position: marker.position }" /> -->
       <Marker :options=" {position: cafe1}" />
       <Marker :options=" {position: cafe2}" />
@@ -80,3 +86,18 @@ export default defineComponent({
   // },
 });
 </script>
+
+
+<style scoped>
+.map-container {
+  width: 800px; 
+  height: 700px; 
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-left: 60px;
+  background-color: #968282; /* Set the background color of the map container */
+}
+</style>
