@@ -32,13 +32,13 @@
     },
       methods: {
         onGroupContainerClick() {
-          this.$router.push("/landing");
+          this.$router.push("/");
         },
         onAboutUsTextClick() {
           this.$router.push("/about");
         },
         onCaffEINATED21Click() {
-          this.$router.push("/landing");
+          this.$router.push("/");
         },
       },
     });

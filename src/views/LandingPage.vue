@@ -2,29 +2,13 @@
   <div :class="$style.landingHigh">
     <div :class="$style.rectangleParent">
       <div :class="$style.groupChild" />
-      <div :class="$style.register">Register</div>
+      <div :class="$style.register" @click="onRegisterClick">Register</div>
     </div>
     <img :class="$style.caffeinated31" alt="main pic" src="@/assets/mainpic.png" />
     <div :class="$style.caffeinated">CAFFEINATED</div>
     <div :class="$style.letsGetCaffeinated">Let’s get caffeinated.</div>
-    <div :class="$style.findCoffee" @click="onFindCoffeeClick">Find coffee</div>
-    <div :class="$style.findCoffee">
-      <button
-        style="
-          padding: 10px 20px;
-          background-color: #854442;
-          color: #fff;
-          border: none;
-          border-radius: 5px;
-          cursor: pointer;
-          transition: background-color 0.3s ease;
-        "
-      >
-        Find coffee!
-      </button>
-      <!--<img :class="$style.vectorIcon" alt="search" src="@/assets/search.png" />-->
-    </div>
-    <div :class="$style.locations">Locations</div>    
+    <div :class="$style.findCoffee" @click="onFindCoffeeClick">Find Coffee</div>
+    <div :class="$style.add" @click="onAddCafeClick">Add Cafe</div>    
     <div :class="$style.aboutUs" @click="onAboutUsTextClick">About Us</div>
     <div :class="$style.landingHighChild" />
     <img :class="$style.caffeinated21" alt="logo" src="@/assets/logo.png" />
@@ -42,6 +26,12 @@
     },
     onFindCoffeeClick() {
       this.$router.push("/detailedresults");
+    },
+    onAddCafeClick() {
+      this.$router.push("/db");
+    },
+    onRegisterClick() {
+      this.$router.push("/db");
     },
   },
   });
@@ -65,7 +55,7 @@
   }
   .rectangleParent {
     position: absolute;
-    top: 82px;
+    top: 95px;
     left: 1050px;
     width: 141px;
     height: 45px;
@@ -122,7 +112,7 @@
   }
   .vectorIcon {
     position: absolute;
-    height: 40%;
+    height: 40px;
     width: 9.61%;
     top: 30%;
     right: 11.57%;
@@ -136,15 +126,22 @@
   .findCoffee {
     position: absolute;
     top: 767px;
-    left: 418px;
-    width: 353.94px;
-    height: 80px;
-    font-size: var(--font-size-11xl);
-    color: #fef3de;
-    font-family: var(--font-inter);
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    background-color: #854442;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+
+           
   }
 
-  .locations {
+  .add {
     position: absolute;
     top: 104px;
     left: 282px;
@@ -192,6 +189,29 @@
     font-family: var(--font-jost);
   }
 
+  @media screen and (max-width: 768px) {
+    .findCoffeeButton {
+      top: auto;
+      bottom: 50px;
+    }
+  }
 </style>
 
 
+<!--<div :class="$style.findCoffee" @click="onFindCoffeeClick">Find coffee</div>
+    <div :class="$style.findCoffee">
+      <button
+        style="
+          padding: 10px 20px;
+          background-color: #854442;
+          color: #fff;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+        "
+      >
+        Find coffee!
+      </button>
+      <img :class="$style.vectorIcon" alt="search" src="@/assets/search.png" />
+    </div>-->
